@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# 🎨 Sekai Asset Gallery - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React фронтенд для Sekai Gallery с фильтрами и click-to-copy функционалом.
 
-## Available Scripts
+## 🚀 Установка
 
-In the project directory, you can run:
+```bash
+npm install
+```
 
-### `npm start`
+## 🔧 Конфигурация
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Создайте файл `.env` в корне проекта:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```env
+REACT_APP_API_URL=http://localhost:8000/api/v1
+```
 
-### `npm test`
+Для продакшена укажите URL вашего backend API.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏃 Запуск
 
-### `npm run build`
+### Development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Откроется [http://localhost:3000](http://localhost:3000)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Production Build
 
-### `npm run eject`
+```bash
+npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Создаёт оптимизированную сборку в папке `build/`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## ✨ Функционал
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Фильтры
+- **Юниты**: Leo/need, VBS, MMJ, WxS, 25-ji, Other
+- **Теги**: room, school, stage, street, cafe, park, и др.
+- Множественный выбор тегов (AND логика)
+- Сброс всех фильтров одной кнопкой
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Click-to-Copy
+- Клик по любой картинке копирует её URL в буфер обмена
+- Русскоязычные уведомления: "Скопировано!"
+- Красивые toast уведомления
 
-## Learn More
+### Адаптивный дизайн
+- 📱 Полностью responsive
+- 💅 Няшный градиентный дизайн
+- ⚡ Lazy loading изображений
+- 🎨 Анимации и hover эффекты
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📦 Deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Vercel
 
-### Code Splitting
+```bash
+npm run build
+vercel --prod
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+В настройках Vercel добавьте:
+```
+REACT_APP_API_URL=https://your-backend-url.com/api/v1
+```
 
-### Analyzing the Bundle Size
+### Netlify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm run build
+netlify deploy --prod --dir=build
+```
 
-### Making a Progressive Web App
+Environment variables:
+- `REACT_APP_API_URL` = URL вашего backend API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🏗 Структура проекта
 
-### Advanced Configuration
+```
+src/
+├── components/
+│   ├── FilterBar.js      # Фильтры по юнитам и тегам
+│   ├── Gallery.js         # Сетка с картинками
+│   └── ImageCard.js       # Карточка изображения
+├── services/
+│   └── api.js             # API service layer
+├── App.js                 # Главный компонент
+└── App.css                # Глобальные стили
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🎯 Использование
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Запустите backend (порт 8000)
+2. Запустите frontend (порт 3000)
+3. Откройте браузер: http://localhost:3000
+4. Добавьте images через админ-панель backend
+5. Кликайте по картинкам чтобы копировать URL!

@@ -1,0 +1,251 @@
+.filter-bar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.filter-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.filter-title {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.filter-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.filter-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.filter-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.filter-content.expanded {
+  max-height: 800px;
+  opacity: 1;
+}
+
+.filter-section {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.unit-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.unit-btn {
+  padding: 10px 20px;
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.unit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.unit-btn.active {
+  background: var(--unit-color);
+  color: white;
+  border-color: var(--unit-color);
+  transform: scale(1.05);
+}
+
+.tag-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.tag-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.tag-label:hover {
+  background: white;
+  transform: translateX(4px);
+}
+
+.tag-label input[type="checkbox"] {
+  display: none;
+}
+
+.tag-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #667eea;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: #667eea;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.tag-label input[type="checkbox"]:checked + .tag-checkbox {
+  background: #667eea;
+  color: white;
+}
+
+.tag-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Time section with animation */
+.time-section {
+  animation: slideDown 0.3s ease-out;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 200px;
+    transform: translateY(0);
+  }
+}
+
+.time-tag {
+  background: rgba(255, 200, 150, 0.9) !important;
+  border: 2px solid rgba(255, 150, 50, 0.5);
+}
+
+.time-tag:hover {
+  background: rgba(255, 220, 180, 1) !important;
+}
+
+.time-tag .tag-checkbox {
+  border-color: #ff9933;
+}
+
+.time-tag input[type="checkbox"]:checked + .tag-checkbox {
+  background: #ff9933;
+}
+
+.clear-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.clear-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .filter-title {
+    font-size: 22px;
+  }
+
+  .unit-filters {
+    gap: 8px;
+  }
+
+  .unit-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .tag-filters {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .tag-label {
+    padding: 6px 10px;
+  }
+
+  .tag-name {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .filter-toggle {
+    width: 100%;
+    text-align: center;
+  }
+
+  .tag-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React, { useState, useEffect, useCallback } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import FilterBar from './components/FilterBar';
+import Gallery from './components/Gallery';
+import { fetchImages } from './services/api';
 
 function App() {
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState({ unit: '', tags: [] });
+
+  const loadImages = useCallback(async () => {
+    setLoading(true);
+    const data = await fetchImages(filters);
+    setImages(data);
+    setLoading(false);
+  }, [filters]);
+
+  useEffect(() => {
+    loadImages();
+  }, [loadImages]);
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FilterBar onFilterChange={handleFilterChange} />
+      <Gallery images={images} loading={loading} />
+      <ToastContainer />
     </div>
   );
 }
