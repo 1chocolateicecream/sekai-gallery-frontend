@@ -20,6 +20,9 @@ const LOCATION_TAGS = [
   'outdoor',
   'indoor',
   'sekai',
+  'крыша',
+  'класс',
+  'коридор',
 ];
 
 const TIME_TAGS = [
@@ -31,6 +34,10 @@ const TIME_TAGS = [
 const EVENT_TAGS = [
   'event',
   'festival',
+];
+
+const WEATHER_TAGS = [
+  'другая погода',
 ];
 
 const FilterBar = ({ onFilterChange }) => {
@@ -139,6 +146,25 @@ const FilterBar = ({ onFilterChange }) => {
             <h3 className="section-title">🎭 Событие</h3>
             <div className="tag-filters">
               {EVENT_TAGS.map(tag => (
+                <label key={tag} className="tag-label">
+                  <input
+                    type="checkbox"
+                    checked={selectedTags.includes(tag)}
+                    onChange={() => handleTagToggle(tag)}
+                  />
+                  <span className="tag-checkbox">
+                    {selectedTags.includes(tag) ? '✓' : ''}
+                  </span>
+                  <span className="tag-name">{tag}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className="filter-section">
+            <h3 className="section-title">🌤️ Погода</h3>
+            <div className="tag-filters">
+              {WEATHER_TAGS.map(tag => (
                 <label key={tag} className="tag-label">
                   <input
                     type="checkbox"
